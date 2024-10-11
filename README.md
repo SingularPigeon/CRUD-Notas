@@ -1,6 +1,6 @@
-# ayudantia-rubrica
+# Ayudantía-Administrador de Notas
 
-This template should help get you started developing with Vue 3 in Vite.
+Creación de un CRUD de notas.
 
 ## Recommended IDE Setup
 
