@@ -1,7 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import AppNavbar from '@/components/AppNavBar.vue'
-import AppFooter from '@/components/AppFooter.vue'
+import AppNavbar from '@/components/App/AppNavBar.vue'
+import AppFooter from '@/components/App/AppFooter.vue'
 </script>
 
 <template>

@@ -6,6 +6,13 @@ export const useNotesStore = defineStore('notes', () => {
   const notes = ref([])
   const notesCount = computed(() => notes.value.length || 0)
 
+  async function getNotes() {
+    const notesData = await fetch()
+    if (notesData) {
+      notes.value = notesData
+    }
+  }
+
   async function addNote(note) {
     const newNoteData = await createNote(note)
     if (newNoteData) {
@@ -14,5 +21,5 @@ export const useNotesStore = defineStore('notes', () => {
     return newNoteData
   }
 
-  return { notes, notesCount, addNote }
+  return { notes, notesCount, addNote, getNotes }
 })

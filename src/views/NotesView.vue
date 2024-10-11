@@ -1,5 +1,5 @@
 <script setup>
-import NoteItem from '@/components/Notes/NoteItem.vue'
+import NoteList from '@/components/Notes/NoteList.vue'
 import { RouterLink } from 'vue-router'
 </script>
 
@@ -9,11 +9,6 @@ import { RouterLink } from 'vue-router'
     <RouterLink class="btn btn-success" :to="{ name: 'nueva-nota' }"
       >Agregar nueva nota</RouterLink
     >
-    <NoteItem
-      :note="{
-        title: 'nota de prueba',
-        content: 'contenido de la nota de prueba',
-      }"
-    />
+    <NoteList />
   </div>
 </template>
