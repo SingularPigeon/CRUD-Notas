@@ -2,6 +2,13 @@
 import { RouterView } from 'vue-router'
 import AppNavbar from '@/components/App/AppNavBar.vue'
 import AppFooter from '@/components/App/AppFooter.vue'
+import { useNotesStore } from '@/stores/notesStore'
+import { onMounted } from 'vue'
+
+const notesStore = useNotesStore()
+onMounted(() => {
+  notesStore.getNotes()
+})
 </script>
 
 <template>

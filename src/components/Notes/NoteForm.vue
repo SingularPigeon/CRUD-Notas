@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useNotesStore } from '@/stores/notesStore'
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -8,8 +8,24 @@ const noteData = ref({
   title: '',
   content: '',
 })
+const props = defineProps({
+  initialNote: {
+    type: Object,
+  },
+})
+
+watch(
+  () => props.initialNote,
+  newInitialNote => {
+    if (newInitialNote) {
+      noteData.value.title = newInitialNote.title
+      noteData.value.content = newInitialNote.content
+    }
+  },
+)
 
 async function handleSubmit() {
+  // validar campos
   const inputsAreValid =
     noteData.value.title.trim() && noteData.value.content.trim()
   if (!inputsAreValid) {
@@ -17,8 +33,10 @@ async function handleSubmit() {
     alert('Todos los campos son requeridos')
     return
   }
-  const response = await notesStore.addNote(noteData.value)
-
+  const response = props.initialNote
+    ? await notesStore.editNote(props.initialNote._uuid, noteData.value)
+    : await notesStore.addNote(noteData.value)
+  // redireccionar a notas al recibir respuesta
   if (response) {
     router.push({ name: 'notas' })
   }

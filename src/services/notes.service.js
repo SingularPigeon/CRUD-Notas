@@ -33,3 +33,34 @@ export const fetchAllNotes = async () => {
     console.error('Error al traer todas las notas', error)
   }
 }
+
+export const fetchNoteById = async id => {
+  try {
+    const response = await api.get(`/notes/${id}`)
+
+    return response.data
+  } catch (error) {
+    console.error(`Error al hacer fetch a nota con id ${id}`, error)
+  }
+}
+
+// eliminar una nota
+export const deleteNote = async id => {
+  try {
+    await api.delete(`/notes/${id}`)
+    return true
+  } catch (error) {
+    console.error(`Error al eliminar nota con id ${id}`, error)
+    return false
+  }
+}
+
+export const updateNote = async (id, form) => {
+  try {
+    const response = await api.put(`/notes/${id}`, form)
+
+    return response.data
+  } catch (error) {
+    console.error(`Error al actualizar nota con id ${id}`, error)
+  }
+}

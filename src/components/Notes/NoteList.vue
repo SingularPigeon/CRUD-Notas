@@ -17,7 +17,7 @@ onMounted(() => {
       v-for="note in notes"
       :note="note"
       :key="note._uuid"
-      class="col-12 col-md-6 col-lg-4 col-xl-3 p-2"
+      class="col-12 col-md-6 col-lg-4 col-xl-3 m-2"
     />
   </div>
 </template>
